@@ -15,18 +15,54 @@
     <meta charset="utf-8">
     <title>Rob Hall</title>
     <style>
-
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial;
+      }
+      header,
+      main,
+      footer {
+        width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      header {
+        position: relative;
+      }
+      h1 {
+        line-height: 100px;
+      }
+      img {
+        position: absolute;
+        right: 0;
+        top: 0;
+        border-radius: 100%;
+      }
+      main {
+        margin-top: 20px;
+        border-color: gray;
+        border-style: solid;
+        border-width: 1px;
+        border-radius: 5px;
+        padding: 20px;
+      }
+      footer {
+        margin-top: 60px;
+        text-align: center;
+      }
     </style>
   </head>
   <body>
 
     <header>
+      <img src="images/rob.jpg" width="100px" height="100px" alt="Rob">
       <h1>Rob Hall</h1>
-      <img src="http://placehold.it/200x200" alt="fun guy">
     </header>
 
     <main>
-      <p>Homework</p>
+      <p>Homework for FEWD-34 SF</p>
         <ul>
           <li><a href="week-1/homework/index.html">Week 1 Homework: Whales</a></li>
           <li><a href="homework/acme.html">Week 2 Homework: ACME Corp</a></li>
@@ -34,7 +70,7 @@
     </main>
 
     <footer>
-      Made with minor back pain in San Francisco
+      Made with intermittent enthusiasm in San Francisco
     </footer>
   </body>
 </html>
