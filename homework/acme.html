@@ -6,12 +6,24 @@
     <style>
       header {
         background-color: rgb(196, 196, 196);
+        border-top-color: gray;
+        border-bottom-color: black;
+        border-left-width: 0;
+        border-right-width: 0;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        border-style: solid;
+      }
+      nav {
+        float: right;
       }
       body {
+        font-family: Arial;
         background-image: url(http://cloud.avandamiri.com/image/3N410e2Q2Z3F/background.png);
         margin:auto;
       }
-      main {
+      main,
+      footer {
         margin-left: auto;
         margin-right: auto;
         width: 60%;
@@ -23,25 +35,41 @@
         border-width: 1px;
         border-radius: 5%;
         text-align: center;
-        padding: 5px;
+        padding: 20px;
+        margin-top: 20px;
       }
       footer {
+        margin-top: 20px;
         text-align: center;
+        border-top-width: 1px;
+        border-top-style: solid;
+        border-top-color: gray;
+        font-size: 10pt;
       }
     </style>
   </head>
   <body>
-    <nav>
-      <header>
-        <img src="http://cloud.avandamiri.com/image/423B1n2p2v0U/acme-corp.jpg" alt="ACME logo" width="">
-      </header>
-    </nav>
+    <header>
+      <img src="http://cloud.avandamiri.com/image/423B1n2p2v0U/acme-corp.jpg" alt="ACME logo" width="200px">
+      <nav>
+        <ul>
+          <li>Products</li>
+          <li>Sign Up</li>
+        </ul>
+      </nav>
+    </header>
 
     <main>
       <div class="welcome">
         <h2>Welcome to ACME Corp!</h2>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis bibendum aliquet massa, id tempor elit dignissim at. Praesent ultricies et odio non eleifend. Aenean commodo magna nec accumsan egestas. Phasellus scelerisque facilisis faucibus. Maecenas nisi est, placerat sit amet erat nec, gravida fermentum neque. Morbi id pellentesque sem. Pellentesque nec magna eget lacus ultrices consectetur. Aenean a nulla nec arcu congue posuere. Praesent non eleifend leo. Donec molestie est eget justo vestibulum, non iaculis ipsum suscipit. Proin in molestie enim, id consequat nunc. Mauris id leo vitae urna consequat hendrerit tincidunt ac magna. Morbi interdum vel lorem vel malesuada. Maecenas eget tristique diam, ac varius ex.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis bibendum
+           aliquet massa, id tempor elit dignissim at. Praesent ultricies et
+           odio non eleifend. Aenean commodo magna nec accumsan egestas. Phasellus
+           scelerisque facilisis faucibus. Maecenas nisi est, placerat sit amet
+           erat nec, gravida fermentum neque. Morbi id pellentesque sem.
+           Pellentesque nec magna eget lacus ultrices consectetur. Aenean a nulla
+            nec arcu congue posuere. Praesent non eleifend leo.
         </p>
         <p>
           Nullam eget turpis suscipit, sagittis neque eget, posuere augue. Curabitur varius pellentesque arcu ut porta. Quisque vitae massa luctus, suscipit felis eu, consectetur nisl. Proin eleifend quam non quam imperdiet blandit.
