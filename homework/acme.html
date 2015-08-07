@@ -4,7 +4,9 @@
     <meta charset="utf-8">
     <title>ACME Corp - Home</title>
     <style>
+
       header {
+        height: 70px;
         background-color: rgb(196, 196, 196);
         border-top-color: rgb(127, 127, 127);
         border-bottom-color: rgb(127, 127, 127);
@@ -14,20 +16,62 @@
         border-bottom-width: 1px;
         border-style: solid;
       }
-      nav {
-        float: right;
+
+      header img{
+        padding-top: 5px;
+        padding-left: 15px;
       }
-      body {
+
+      nav {
+        display: inline;
+        float: right;
+        margin-right: 20px;
+      }
+
+      ul {
+        list-style: none;
+        text-decoration: none;
+      }
+
+      li {
+        display: inline;
         font-family: Arial;
+        margin-right: 1em;
+      }
+
+      header a {
+        font-weight: 500;
+        color: #fff;
+        text-decoration:none;
+        text-shadow: 1px 1px 2px #666666;
+      }
+
+      button {
+        border-radius: 3px;
+        text-shadow: 1px 1px 2px #666666;
+        font-family: "Lucida Sans", sans-serif;
+        color: #ffffff;
+        font-size: 1em;
+        background: #2755B0;
+        padding: 10px 20px 10px 20px;
+        border: solid #6b6b6b 1px;
+        text-decoration: none;
+      }
+
+      body {
         background-image: url(http://cloud.avandamiri.com/image/3N410e2Q2Z3F/background.png);
         margin:auto;
       }
+
       main,
       footer {
+        font-family: "Lucida Sans", sans-serif;
+        font-weight: normal;
         margin-left: auto;
         margin-right: auto;
-        width: 60%;
+        width: 75%;
       }
+
       .welcome {
         background-color: white;
         border-color: grey;
@@ -37,28 +81,37 @@
         text-align: left;
         padding: 20px;
         margin-top: 40px;
-        box-shadow: 0px 5px 3px gray
+        box-shadow: 0px 5px 3px gray;
       }
+
       footer {
         margin-top: 40px;
         text-align: center;
         border-top-width: 1px;
-        border-top-style: solid;
-        border-top-color: rgb(212, 212, 212);
+        border-top-style: outset;
+        border-top-color: rgb(195, 195, 195);
         font-size: 10pt;
-        color: lightgray;
+        color: rgb(195, 195, 195);
+        text-shadow: white 1px 1px 1px;
       }
+
     </style>
   </head>
   <body>
     <header>
-      <img src="http://cloud.avandamiri.com/image/423B1n2p2v0U/acme-corp.jpg" alt="ACME logo" width="200px">
+      <img src="http://cloud.avandamiri.com/image/423B1n2p2v0U/acme-corp.jpg" alt="ACME logo" height="60px">
+
       <nav>
         <ul>
-          <li>Products</li>
-          <li>Sign Up</li>
+          <li>
+            <a href="#">Products</a>
+          </li>
+          <li>
+            <button type="button" name="button" a href="#">Sign Up</button>
+          </li>
         </ul>
       </nav>
+
     </header>
 
     <main>
