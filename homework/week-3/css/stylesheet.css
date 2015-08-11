@@ -99,8 +99,8 @@ footer {
 }
 
 /*
-It seems more modular to define a class than to apply
-this styling to main.
+This class applies to the main content container
+on each page.
  */
 .responsive_content {
   background-color: white;
@@ -112,6 +112,13 @@ this styling to main.
   padding: 20px;
   margin-top: 40px;
   box-shadow: 0px 2px 3px rgb(180, 180, 180);
+}
+
+/*
+Defines the layout of each product listing
+*/
+.product_listing {
+  padding: 20px;
 }
 
 footer {
