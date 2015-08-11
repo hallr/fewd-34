@@ -122,8 +122,16 @@ on each page.
 /*
 Defines the layout of each product listing
 */
-.product-listing {
-  padding: 20px;
+.product-listing-flex-container {
+  display: flex;
+}
+
+.product-item-image {
+  flex: 2;
+}
+
+.product-item-description {
+  flex: 3;
 }
 
 footer {
