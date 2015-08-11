@@ -107,7 +107,7 @@ footer {
 This class applies to the main content container
 on each page.
  */
-.responsive_content {
+.responsive-content {
   background-color: white;
   border-color: rgb(180, 180, 180);
   border-style: solid;
@@ -122,7 +122,7 @@ on each page.
 /*
 Defines the layout of each product listing
 */
-.product_listing {
+.product-listing {
   padding: 20px;
 }
 
