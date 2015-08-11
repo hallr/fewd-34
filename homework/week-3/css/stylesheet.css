@@ -75,7 +75,12 @@ header a {
 }
 
 .button-prod-details {
-  color: blue;
+  color: rgb(0, 0, 255);
+}
+
+.button-add-to-cart {
+  color: white;
+  background-color: rgb(0, 0, 255);
 }
 
 .button-primary:hover {
