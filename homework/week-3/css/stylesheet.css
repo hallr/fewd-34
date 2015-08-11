@@ -1,0 +1,99 @@
+header {
+  height: 70px;
+  background-color: rgb(196, 196, 196);
+  border-top-color: rgb(127, 127, 127);
+  border-bottom-color: rgb(127, 127, 127);
+  border-left-width: 0;
+  border-right-width: 0;
+  border-top-width: 1px;
+  border-bottom-width: 1px;
+  border-style: solid;
+}
+
+header img{
+  padding-top: 5px;
+  padding-left: 15px;
+}
+
+nav {
+  display: inline;
+  float: right;
+  margin-right: 20px;
+}
+
+ul {
+  list-style: none;
+  text-decoration: none;
+}
+
+li {
+  display: inline;
+  font-family: Arial;
+  margin-right: 1em;
+}
+
+/*
+Here I use a descendant selector so that this styling
+is not unintentionally applied to _every_ anchor link in the page.
+*/
+header a {
+  font-weight: 500;
+  color: #fff;
+  text-decoration:none;
+  text-shadow: 1px 1px 2px #666666;
+}
+
+button {
+  border-radius: 3px;
+  text-shadow: 1px 1px 2px #666666;
+  font-family: "Lucida Sans", sans-serif;
+  color: #ffffff;
+  font-size: 1em;
+  background: #2755B0;
+  padding: 10px 20px 10px 20px;
+  border: solid #6b6b6b 1px;
+  text-decoration: none;
+}
+
+body {
+  background-image: url(http://cloud.avandamiri.com/image/3N410e2Q2Z3F/background.png);
+  margin:auto;
+}
+
+/* Don't repeat yourself; multiple selector */
+main,
+footer {
+  font-family: "Lucida Sans", sans-serif;
+  font-weight: normal;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75%;
+}
+
+/*
+It seems more modular to define a class than to apply
+this styling to main.
+ */
+.welcome {
+  background-color: white;
+  border-color: rgb(180, 180, 180);
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 10px;
+  text-align: left;
+  padding: 20px;
+  margin-top: 40px;
+  box-shadow: 0px 2px 3px rgb(180, 180, 180);
+}
+
+footer {
+  margin-top: 40px;
+  text-align: center;
+  border-top-width: 1px;
+  border-top-style: inset;
+  border-top-color: rgb(280, 280, 280);
+  font-size: 10pt;
+  color: rgb(195, 195, 195);
+  text-shadow: white 1px 1px 1px;
+  box-shadow: inset 0 1px 1px white;
+}
