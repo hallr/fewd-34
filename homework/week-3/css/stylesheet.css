@@ -43,7 +43,26 @@ header a {
   text-shadow: 1px 1px 2px #666666;
 }
 
-button {
+.button {
+  border: 1px solid blue;
+  border-radius: 3px;
+  padding: 5px;
+  margin: 5px;
+  font-family: Arial;
+  font-size: 1em;
+  background-color: white;
+  box-sizing: border-box;
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.button:hover {
+  background-color: yellow;
+  border-color: orange;
+}
+
+.button-signup {
   border-radius: 3px;
   text-shadow: 1px 1px 2px #666666;
   font-family: "Lucida Sans", sans-serif;
@@ -53,6 +72,15 @@ button {
   padding: 10px 20px 10px 20px;
   border: solid #6b6b6b 1px;
   text-decoration: none;
+}
+
+.button-prod-details {
+  color: blue;
+}
+
+.button-primary:hover {
+  border-color: red;
+  color: red;
 }
 
 body {
@@ -74,7 +102,7 @@ footer {
 It seems more modular to define a class than to apply
 this styling to main.
  */
-.welcome {
+.responsive_content {
   background-color: white;
   border-color: rgb(180, 180, 180);
   border-style: solid;
