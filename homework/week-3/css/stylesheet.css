@@ -124,6 +124,7 @@ Defines the layout of each product listing
 */
 .product-listing-flex-container {
   display: flex;
+  margin-top: 1em;
 }
 
 .product-item-image {
@@ -132,6 +133,10 @@ Defines the layout of each product listing
 
 .product-item-description {
   flex: 3;
+}
+
+.product-item-description p {
+  margin-top: 0;
 }
 
 footer {
