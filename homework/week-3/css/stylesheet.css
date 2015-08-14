@@ -28,6 +28,7 @@ ul {
 
 nav li {
   display: inline;
+  font-family: Arial;
   margin-right: 1em;
 }
 
