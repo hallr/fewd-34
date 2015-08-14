@@ -29,13 +29,46 @@
       <div class="responsive-content">
         <h2>Sign Up</h2>
 
+<!-- old version
         <form>
           <label>First Name <input type="text" name="first_name" value="John" /></label><br />
            <label>Last Name <input type="text" name="last_name" value="Doe" /></label><br />
                <label>Email <input type="email" name="email" value="john.doe@example.com" /></label><br />
             <label>Password <input type="password" name="password" /></label><br />
           <input type="checkbox" name="terms" id="terms" value="accepts_terms"/></label for="terms">Agree to our terms of service</label><br />
-        <input type="submit" value="Submit" />
+          <input type="submit" value="Submit" />
+        </form>
+-->
+
+        <form>
+
+          <ul>
+            <li>
+              </label for="first_name">First Name</label>
+              <input type="text" name="first_name" id="first_name" value="John" />
+            </li>
+            <li>
+              </label for="last_name">Last Name</label>
+              <input type="text" name="last_name" id="last_name" value="Doe" />
+            </li>
+          </ul>
+
+          <ul class="labels">
+            <li></label for="first_name">First Name</label></li>
+            <li></label for="last_name">Last Name</label></li>
+          </ul>
+          </ul class="input-fields">
+            <li><input type="text" name="first_name" id="first_name" value="John" /></li>
+            <li><input type="text" name="last_name" id="last_name" value="Doe" /></li>
+          </ul>
+
+          </label for="terms">Agree to our terms of service</label>
+
+          <input type="email" name="email" id="email" value="john.doe@example.com" />
+          <input type="password" name="password" id="password" />
+          <input type="checkbox" name="terms" id="terms" value="accepts_terms"/>
+          <input type="submit" value="Submit" />
+
         </form>
 
       </div>

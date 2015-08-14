@@ -26,9 +26,8 @@ ul {
   text-decoration: none;
 }
 
-li {
+nav li {
   display: inline;
-  font-family: Arial;
   margin-right: 1em;
 }
 
@@ -131,6 +130,21 @@ and the description plus buttons is another flex-item.
 
 .product-item-description p {
   margin: 0 auto 1em auto;
+}
+
+.labels {
+  float: left;
+  position: absolute;
+  left: 0;
+}
+
+.labels li {
+  display: inline-block;
+}
+
+.input-fields {
+  position: relative;
+  overflow: auto;
 }
 
 footer {
