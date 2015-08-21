@@ -26,6 +26,10 @@ ul {
   text-decoration: none;
 }
 
+li {
+  display: inline-block;
+}
+
 nav li {
   display: inline;
   font-family: Arial;
