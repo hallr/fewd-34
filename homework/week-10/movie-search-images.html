@@ -161,7 +161,13 @@
     }
 
     function resultsReceived(results) {
-      results["Search"].forEach(displayMovie);
+      console.log(results);
+      if (results["Response"] !== "False") {
+        results["Search"].forEach(displayMovie);
+      }
+      else if (results["Error"] == "Movie not found!") {
+        alert("No results found. Typo perhaps?");
+      }
     }
 
     function displayMovie(movie) {
