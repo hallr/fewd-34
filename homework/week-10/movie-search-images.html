@@ -254,7 +254,7 @@
 
       //Check for N/A values for poster image
       if (detailResults["Poster"] !== "N/A") {
-        var posterURL = "http://proxy.avandamiri.com/get?url=" + detailResults["Poster"];
+        var posterURL = "http://proxy.avandamiri.com/get?url=" + encodeURIComponent(detailResults["Poster"]);
       }
       else {
         var posterURL = "http://graph.facebook.com/22016037/picture?";
