@@ -145,6 +145,16 @@
 
     function formSubmitted(event) {
       event.preventDefault();
+
+      //Clear search results from any prior query
+      //before API request for new query.
+      moviesList = document.getElementById("movies");
+      if (moviesList.getElementsByClassName("movie").length > 0) {
+        //Using quick jquery way to do this
+        $("#movies").empty();
+      }
+
+      //API request for search query
       var query = document.querySelector("#query").value;
       var url = "http://omdbapi.com/?s=" + query;
       $.get(url, resultsReceived);
@@ -160,6 +170,9 @@
       var title = document.createElement("div");
       var release = document.createElement("div");
 
+      //Checks the type of result and appends the type of the
+      //title (e.g. TV series, game) to the result title if
+      //the result is not a movie.
       if (movie["Type"] == "movie" || movie["Type"] == "Movie") {
         link.textContent = movie["Title"];
       }
@@ -191,16 +204,14 @@
       item.appendChild(release);
       document.querySelector("#movies").appendChild(item);
     }
+
     //Event handler for a user click on the movie title or triangle
     //First, determine whether the details for that movie are
     //already displayed. If not, retrieve the details via a REST
     //API call and display those details.
     function titleClicked(event) {
       event.preventDefault();
-      //alert("You " + event.type + " evented the movie " + event.target.getAttribute("id"));
-
       thisMovieLink = event.target;
-      //console.log(thisMovieLink);
       thisMovieParentLi = thisMovieLink.parentNode.parentNode;
 
       //If movie details are already shown, then simply
@@ -225,9 +236,9 @@
       }
     }
 
+    //Parse the results from the OMDB API
     function displayMovieDetail(detailResults) {
-      //Parse the results from the OMDB API
-      //Check for N/A values for plot and poster image
+      //Check for N/A values for plot summary
       if (detailResults["Plot"] !== "N/A") {
         var plotText = detailResults["Plot"];
       }
@@ -235,8 +246,8 @@
         var plotText = "Plot summary not available. Avand may have seen it. Ask him.";
       }
 
+      //Check for N/A values for poster image
       if (detailResults["Poster"] !== "N/A") {
-        //console.log("poster results: " + detailResults["Poster"]);
         var posterURL = detailResults["Poster"];
       }
       else {
@@ -244,8 +255,6 @@
       }
 
       var imdbID = detailResults["imdbID"];
-      //alert("successful detail info call. Movie plot summary is: " + plotText);
-
       //Create our new DOM elements
       var detail = document.createElement("div");
       var posterImg = document.createElement("img");
@@ -254,16 +263,13 @@
       //Set some attribute values
       plot.textContent = plotText;
       posterImg.setAttribute("src", posterURL);
-      //alert("The URL for the movie poster is: " + posterImg.getAttribute("src"));
 
       //Get a handle to the movie that was clicked
       //Note that this is the anchor element and we need
       //to traverse up in the DOM tree to get the parent li
       var movieLink = document.getElementById(imdbID);
-      //alert("selected movie item with imdbID: " + movieLink.getAttribute("id"));
       if (movieLink.parentNode.parentNode) {
         var movieItem = movieLink.parentNode.parentNode;
-        //alert("class of parent li is: " + movieItem.getAttribute("class"));
       }
 
       //Append our new DOM elements to the existing movie item
