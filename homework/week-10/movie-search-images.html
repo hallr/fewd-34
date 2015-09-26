@@ -156,7 +156,7 @@
 
       //API request for search query
       var query = document.querySelector("#query").value;
-      var url = "http://omdbapi.com/?s=" + query;
+      var url = "http://proxy.avandamiri.com/get?url=http://omdbapi.com/?s=" + query;
       $.get(url, resultsReceived);
     }
 
@@ -237,7 +237,7 @@
       }
       else {
         //Request movie details via OMDB API
-        var infoURL = "http://omdbapi.com/?i=" + thisMovieLink.getAttribute("id");
+        var infoURL = "http://proxy.avandamiri.com/get?url=http://omdbapi.com/?i=" + thisMovieLink.getAttribute("id");
         $.get(infoURL, displayMovieDetail);
       }
     }
@@ -257,7 +257,7 @@
         var posterURL = "http://proxy.avandamiri.com/get?url=" + detailResults["Poster"];
       }
       else {
-        var posterURL = "http://graph.facebook.com/22016037/picture?";
+        var posterURL = "http://proxy.avandamiri.com/get?url=http://graph.facebook.com/22016037/picture?";
       }
 
       var imdbID = detailResults["imdbID"];
