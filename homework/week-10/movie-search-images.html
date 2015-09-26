@@ -160,7 +160,16 @@
       var title = document.createElement("div");
       var release = document.createElement("div");
 
-      link.textContent = movie["Title"];
+      if (movie["Type"] == "movie" || movie["Type"] == "Movie") {
+        link.textContent = movie["Title"];
+      }
+      else if (movie["Type"] == "game" || movie["Type"] == "Game") {
+        link.textContent = movie["Title"] + " (Game)";
+      }
+      else if (movie["Type"] == "series" || movie["Type"] == "Series") {
+        link.textContent = movie["Title"] + " (Series)";
+      }
+
       release.textContent = movie["Year"];
 
       var url = "http://www.imdb.com/title/" + movie["imdbID"];
@@ -227,7 +236,7 @@
       }
 
       if (detailResults["Poster"] !== "N/A") {
-        console.log("poster results: " + detailResults["Poster"]);
+        //console.log("poster results: " + detailResults["Poster"]);
         var posterURL = detailResults["Poster"];
       }
       else {
