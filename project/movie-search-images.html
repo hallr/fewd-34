@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+
+    <title>Movie Search</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <style>
+      * { box-sizing: border-box; }
+      body {
+        font-family: Arial;
+        margin: 0;
+        background: #f1f0f5;
+        font-family: sans-serif;
+        font-size: 18px;
+        line-height: 1.4em;
+      }
+      main {
+        margin: 2em auto;
+        box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+        background: white;
+        padding: 2em 3em;
+        max-width: 600px;
+      }
+      input,
+      button {
+        border: 1px solid rgba(0, 0, 0, 0.2);
+        border-bottom-width: 2px;
+        border-radius: 5px; font-size: inherit;
+        padding: .5em 1em;
+        cursor: pointer;
+      }
+      input {
+        width: 70%;
+      }
+      button {
+        color: white;
+        width: 28%;
+        background-color: #04d78b;
+      }
+      a {
+        color: #099c67;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      #movies {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .movie {
+        overflow: auto;
+        margin-top: 0.8em;
+        padding: 0.2em 0 0.8em;
+        border-bottom: 1px solid #e7e7e7;
+      }
+      .movie:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .movie img {
+        float: left;
+        width: 100px;
+        margin-right: 20px;
+      }
+      .movie-title a {
+        font-size: 1.2em;
+        font-weight: bold;
+        margin-bottom: .2em;
+        position: relative;
+        display: block;
+      }
+      .movie-title a::after {
+        content: "";
+        height: 0;
+        width: 0;
+        border-width: 6px 0 6px 8px;
+        border-style: solid;
+        border-color: transparent transparent transparent #d4d4d4;
+        position: absolute;
+        top: .4em;
+        right: .2em;
+        transition: transform 200ms;
+      }
+      .movie-expanded .movie-title a::after {
+        transform: rotate(90deg);
+      }
+      .movie-release-date {
+        color: #b6b6b6;
+      }
+      .movie-details {
+        font-size: 0.9em;
+        margin: 1em;
+        overflow: auto;
+        display: none;
+      }
+      .movie-expanded .movie-details {
+        display: block;
+      }
+      .movie-details img {
+        float: right;
+        margin: 1em;
+        padding: 0.2em;
+        box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
+      }
+      .movie-plot {
+
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <form id="movie-search-form">
+        <input type="text" id="query" placeholder="Movie title">
+        <button type="submit">Search</button>
+      </form>
+
+      <ul id="movies">
+        <!--li class="movie movie-expanded">
+          <div class="movie-title">
+            <a href="http://www.imdb.com/title/tt0106611" target="_blank">
+              Cool Runnings
+            </a>
+          </div>
+          <div class="movie-release-date">1993</div>
+          <div class="movie-details">
+            <img src="http://ia.media-imdb.com/images/M/MV5BMjMxMTQ3MzMwMV5BMl5BanBnXkFtZTgwNTYxNzYxMTE@._V1_SX300.jpg">
+            <div class="movie-plot">
+              When a Jamaican sprinter is disqualified to the Olympic Games,
+              he enlists the help of a dishonored coach to start the first
+              Jamaican Bobsled Team.
+            </div>
+          </div>
+        </li-->
+      </ul>
+    </main>
+
+    <script>
+    var form = document.querySelector("#movie-search-form");
+    form.addEventListener("submit", formSubmitted);
+
+    function formSubmitted(event) {
+      event.preventDefault();
+
+      //Clear search results from any prior query
+      //before API request for new query.
+      moviesList = document.getElementById("movies");
+      if (moviesList.getElementsByClassName("movie").length > 0) {
+        //Using quick jquery way to do this
+        $("#movies").empty();
+      }
+
+      //API request for search query
+      var query = document.querySelector("#query").value;
+      var url = "http://omdbapi.com/?s=" + query;
+      $.get(url, resultsReceived);
+    }
+
+    function resultsReceived(results) {
+      console.log(results);
+      if (results["Response"] !== "False") {
+        results["Search"].forEach(displayMovie);
+      }
+      else if (results["Error"] == "Movie not found!") {
+        alert("No results found. Typo perhaps?");
+      }
+    }
+
+    function displayMovie(movie) {
+      var item = document.createElement("li");
+      var link = document.createElement("a");
+      var title = document.createElement("div");
+      var release = document.createElement("div");
+
+      //Checks the type of result and appends the type of the
+      //title (e.g. TV series, game) to the result title if
+      //the result is not a movie.
+      if (movie["Type"] == "movie" || movie["Type"] == "Movie") {
+        link.textContent = movie["Title"];
+      }
+      else if (movie["Type"] == "game" || movie["Type"] == "Game") {
+        link.textContent = movie["Title"] + " (Game)";
+      }
+      else if (movie["Type"] == "series" || movie["Type"] == "Series") {
+        link.textContent = movie["Title"] + " (Series)";
+      }
+
+      release.textContent = movie["Year"];
+
+      var url = "http://www.imdb.com/title/" + movie["imdbID"];
+      link.setAttribute("href", url);
+      link.setAttribute("target", "_blank");
+      //While we have the imdbID as its own field, save it
+      //by making it the id attribute of that movie's link
+      link.setAttribute("id", movie["imdbID"])
+      //Add each event listener for movie title clicks
+      //here in the function that creates the anchor element
+      link.addEventListener("click", titleClicked);
+
+      item.classList.add("movie");
+      title.classList.add("movie-title");
+      release.classList.add("movie-release-date");
+
+      title.appendChild(link);
+      item.appendChild(title);
+      item.appendChild(release);
+      document.querySelector("#movies").appendChild(item);
+    }
+
+    //Event handler for a user click on the movie title or triangle
+    //First, determine whether the details for that movie are
+    //already displayed. If not, retrieve the details via a REST
+    //API call and display those details.
+    function titleClicked(event) {
+      event.preventDefault();
+      thisMovieLink = event.target;
+      thisMovieParentLi = thisMovieLink.parentNode.parentNode;
+
+      //If movie details are already shown, then simply
+      //collapse movie-details div.
+      //If movie details are not already shown, then check
+      //if details have already been retrieved via API.
+      //If so, simply expand div again. If not, request
+      //movie details from API.
+      if (thisMovieParentLi.classList.contains("movie-expanded")) {
+        //Collapse detail div
+        thisMovieParentLi.classList.remove("movie-expanded");
+      }
+      else if (thisMovieParentLi.getElementsByClassName("movie-details").length == 1) {
+        //This movie already has detail elements. Expand details div only.
+        //console.log("the length of getElementsByClassName is: " + thisMovieParentLi.getElementsByClassName("movie-details").length);
+        thisMovieParentLi.classList.add("movie-expanded");
+      }
+      else {
+        //Request movie details via OMDB API
+        var infoURL = "http://omdbapi.com/?i=" + thisMovieLink.getAttribute("id");
+        $.get(infoURL, displayMovieDetail);
+      }
+    }
+
+    //Parse the results from the OMDB API
+    function displayMovieDetail(detailResults) {
+      //Check for N/A values for plot summary
+      if (detailResults["Plot"] !== "N/A") {
+        var plotText = detailResults["Plot"];
+      }
+      else {
+        var plotText = "Plot summary not available. Avand may have seen it. Ask him.";
+      }
+
+      //Check for N/A values for poster image
+      if (detailResults["Poster"] !== "N/A") {
+        var posterURL = "http://proxy.avandamiri.com/get?url=" + encodeURIComponent(detailResults["Poster"]);
+      }
+      else {
+        var posterURL = "http://graph.facebook.com/22016037/picture?";
+      }
+
+      var imdbID = detailResults["imdbID"];
+      //Create our new DOM elements
+      var detail = document.createElement("div");
+      var posterImg = document.createElement("img");
+      var plot = document.createElement("div");
+
+      //Set some attribute values
+      plot.textContent = plotText;
+      posterImg.setAttribute("src", posterURL);
+
+      //Get a handle to the movie that was clicked
+      //Note that this is the anchor element and we need
+      //to traverse up in the DOM tree to get the parent li
+      var movieLink = document.getElementById(imdbID);
+      if (movieLink.parentNode.parentNode) {
+        var movieItem = movieLink.parentNode.parentNode;
+      }
+
+      //Append our new DOM elements to the existing movie item
+      detail.appendChild(posterImg);
+      detail.appendChild(plot);
+      movieItem.appendChild(detail);
+
+      //Apply styling, with expanded last
+      detail.classList.add("movie-details");
+      //Note: class movie-plot does not have any styling
+      plot.classList.add("movie-plot");
+      movieItem.classList.add("movie-expanded");
+    }
+
+    </script>
+  </body>
+</html>
